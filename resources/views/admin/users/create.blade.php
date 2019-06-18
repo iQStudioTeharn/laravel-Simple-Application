@@ -64,7 +64,7 @@
                 
 
                 <div class="js-upload" uk-form-custom>
-                    {!! Form::file('profileImage', []) !!}
+                    {!! Form::file('profileImage') !!}
                     <button class="uk-button uk-button-default" type="button" tabindex="-1">Upload Image</button>
                 </div>
             </div>
