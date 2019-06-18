@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\AddUserRequest;
+use App\User;
+use App\Role;
+use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class AdminUsersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +18,9 @@ class UserController extends Controller
     public function index()
     {
         //
-        return view('users.index');
+
+        $users = User::all();
+        return view('admin.users.index',compact('users'));
     }
 
     /**
@@ -25,6 +31,11 @@ class UserController extends Controller
     public function create()
     {
         //
+        
+
+        $roles = Role::select('id','name')->get();
+       
+        return view('admin.users.create',compact('roles'));
     }
 
     /**
@@ -33,9 +44,15 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddUserRequest $request)
     {
         //
+        $request = $request->all();
+        return $request;
+        $request['password'] = Hash::make($request['password']);
+       
+        User::create($request);
+        
     }
 
     /**

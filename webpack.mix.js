@@ -20,6 +20,7 @@ mix.styles([
     'public/css/font-awesome.css',
     'public/css/metisMenu.css',
     'public/css/sb-admin-2.css',
+    'node_modules/uikit/dist/css/uikit.min.css',
 ],'public/css/libs.css')
 .scripts([
     'public/js/jquery.js',
@@ -27,4 +28,6 @@ mix.styles([
     'public/js/metisMenu.js',
     'public/js/sb-admin-2.js',
     'public/js/scripts.js',
+    'node_modules/uikit/dist/js/uikit.min.js',
+    'node_modules/uikit/dist/js/uikit-icons.min.js',
 ],'public/js/libs.js');
