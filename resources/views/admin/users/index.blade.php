@@ -12,6 +12,7 @@
                 <th>Created</th>
                 <th>Updated</th>
                 <th>Status</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -36,6 +37,21 @@
                             {{ 'Deactive' }}
                         @endif
                         
+                    </td>
+                    <td class="uk-text-middle">
+                        <ul class="uk-iconnav">
+                            <li><a href="{{ route('users.edit',$user->id) }}" uk-icon="icon: file-edit" uk-tooltip="Edit"></a></li>
+                            {!! Form::open(['method'=>'DELETE' , 'action'=>['AdminUsersController@destroy',$user->id]]) !!}
+                                
+                                <li>
+                                    
+                                    {!! Form::label('Delete', '', ['class'=>'uk-text-danger','uk-tooltip'=>"Delete",'uk-icon'=>'icon: trash']) !!}
+                                    {!! Form::submit(null, ['id'=>'Delete','hidden'=>true]) !!}
+                                    
+                                </li>
+                            {!! Form::close() !!}
+                            
+                        </ul>
                     </td>
                 </tr>
 

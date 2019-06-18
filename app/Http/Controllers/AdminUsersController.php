@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\AddUserRequest;
+use App\Http\Requests\EditUserRequest;
 use App\User;
 use App\Role;
 use App\Photo;
@@ -90,6 +91,9 @@ class AdminUsersController extends Controller
     public function edit($id)
     {
         //
+        $user = User::findOrFail($id);
+        $roles = Role::all();
+        return view('admin.users.edit',compact(['user','roles']));
     }
 
     /**
@@ -99,9 +103,20 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditUserRequest $request, $id)
     {
         //
+        $user = User::findOrFail($id);
+        $input = $request->all();
+        $input['password'] = Hash::make($request->password);
+        if($file = $request->file('profileImage')){
+            $name = time() . $file->getClientOriginalName();
+            $file->move('images',$name);
+            $input['photo_id'] = Photo::create(['profileImage'=>$name])->id;
+            
+        }
+        $user->update($input);
+        return redirect('admin/users');
     }
 
     /**
@@ -113,5 +128,8 @@ class AdminUsersController extends Controller
     public function destroy($id)
     {
         //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect('admin/users');
     }
 }
