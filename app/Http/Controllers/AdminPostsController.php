@@ -80,7 +80,10 @@ class AdminPostsController extends Controller
     public function edit($id)
     {
         //
-        return 'salam';
+        $cat = Category::pluck('name','id')->all();
+        $post = Posts::findOrFail($id);
+        return view('admin.posts.edit',compact(['post','cat']));
+
     }
 
     /**
@@ -93,6 +96,16 @@ class AdminPostsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $input = $request->all();
+        $input['status'] = isset($input['status']) ? $input['status'] : 0;
+        if ($file = $request->file('profileImage')) {
+            # code...
+            $name = time() . $file->getClientOriginalName();
+            $file->move('images',$name);
+            $input['photo_id'] = Photo::create(['profileImage'=>$name])->id;
+        }
+        Posts::findOrFail($id)->update($input);
+        return redirect('admin/posts');
     }
 
     /**
@@ -104,5 +117,10 @@ class AdminPostsController extends Controller
     public function destroy($id)
     {
         //
+        $post = Posts::findOrFail($id);
+        unlink(public_path().'/images/'.$post->photo->profileImage);
+        $post->photo->delete();
+        $post->delete();
+        return redirect('admin/posts');
     }
 }
