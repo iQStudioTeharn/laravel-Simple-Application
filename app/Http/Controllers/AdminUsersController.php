@@ -9,7 +9,7 @@ use App\User;
 use App\Role;
 use App\Photo;
 use Illuminate\Support\Facades\Hash;
-
+use Session;
 class AdminUsersController extends Controller
 {
     /**
@@ -128,8 +128,13 @@ class AdminUsersController extends Controller
     public function destroy($id)
     {
         //
+        
         $user = User::findOrFail($id);
+        unlink(public_path()."/images/".$user->photo->profileImage);
+        $user->photo->delete();
+        Session::flash('Deleted', "$user->name Has Been Deleted");
         $user->delete();
+        
         return redirect('admin/users');
     }
 }

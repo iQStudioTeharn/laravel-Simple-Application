@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 
+
 @section('content')
     
     <h1>Users</h1>
@@ -45,8 +46,8 @@
                                 
                                 <li>
                                     
-                                    {!! Form::label('Delete', '', ['class'=>'uk-text-danger','uk-tooltip'=>"Delete",'uk-icon'=>'icon: trash']) !!}
-                                    {!! Form::submit(null, ['id'=>'Delete','hidden'=>true]) !!}
+                                    {!! Form::label('Delete'.$user->id, '', ['class'=>'uk-text-danger','uk-tooltip'=>"Delete",'uk-icon'=>'icon: trash']) !!}
+                                    {!! Form::submit(null, ['id'=>'Delete'.$user->id,'hidden'=>true]) !!}
                                     
                                 </li>
                             {!! Form::close() !!}
@@ -65,3 +66,16 @@
 
 
 @endsection
+
+@section('footer')
+    
+    @if(Session::has('Deleted'))
+
+        <script>
+                UIkit.notification({message: '{{ session('Deleted') }}', status: 'success',})
+        </script>
+
+    @endif
+
+
+@stop
