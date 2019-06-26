@@ -15,7 +15,7 @@ class AddImageColumnToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->integer('photo_id')->index();
+            $table->integer('photo_id')->index()->nullable();
         });
     }
 

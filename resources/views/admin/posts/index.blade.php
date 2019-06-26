@@ -29,7 +29,7 @@
                         {{ $post->title }}
                     </td>
                     <td class="uk-text-middle">{{ str_limit($post->body,50) }}</td>
-                    <td class="uk-text-middle">{{ $post->category->name }}</td>
+                    <td class="uk-text-middle">{{ !empty($post->category->name) ? $post->category->name : 'uncategorized' }}</td>
                     <td class="uk-text-middle">{{ $post->user->name }}</td>
                     <td class="uk-text-middle">{{ $post->created_at->diffForHumans() }}</td>
                     <td class="uk-text-middle">{{ $post->updated_at->diffForHumans() }}</td>
