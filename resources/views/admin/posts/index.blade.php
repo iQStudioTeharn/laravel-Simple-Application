@@ -28,7 +28,7 @@
                         <img src="/images/{{ $post->photo ? $post->photo->profileImage : 'profile.jpeg' }}" alt="postProfile" width="70" height="70"  class="uk-border-rounded">
                         {{ $post->title }}
                     </td>
-                    <td class="uk-text-middle">{{ $post->body }}</td>
+                    <td class="uk-text-middle">{{ str_limit($post->body,50) }}</td>
                     <td class="uk-text-middle">{{ $post->category->name }}</td>
                     <td class="uk-text-middle">{{ $post->user->name }}</td>
                     <td class="uk-text-middle">{{ $post->created_at->diffForHumans() }}</td>
