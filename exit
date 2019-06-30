@@ -1,0 +1,53 @@
+[33mcommit eaaff653ad1b2e2fab1979f318ebda7b45a05ac3[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: alireza farokhi <alireza.farokhi70@gmail.com>
+Date:   Wed Jun 26 15:34:32 2019 +0430
+
+    =CAtegory add delete edit
+
+[33mcommit dc9c1c7c9934e9a8fb23be611a6e651c94220e7b[m
+Author: alireza farokhi <alireza.farokhi70@gmail.com>
+Date:   Wed Jun 26 11:07:30 2019 +0430
+
+    =DELETE POST ID USER DELETED
+
+[33mcommit 819c5ff0e76db96e42a9a80963345dda255b111d[m
+Author: alireza farokhi <alireza.farokhi70@gmail.com>
+Date:   Wed Jun 19 17:42:07 2019 +0430
+
+    100% post Add & Edit & Delete
+
+[33mcommit a5a267fcc4b7eed9a25ff72e86796e2cb28af506[m
+Author: alireza farokhi <alireza.farokhi70@gmail.com>
+Date:   Wed Jun 19 17:05:00 2019 +0430
+
+    Reading And Creating Posts is complete
+
+[33mcommit 47df9f072abb27e0d8a14946f9bfddd13b5ad4c6[m
+Author: alireza farokhi <alireza.farokhi70@gmail.com>
+Date:   Tue Jun 18 15:14:09 2019 +0430
+
+    users 100% Add & Edit & Delete
+
+[33mcommit cea45649d98e594cdf7bb6775107303592025ac7[m
+Author: alireza farokhi <alireza.farokhi70@gmail.com>
+Date:   Tue Jun 18 12:06:08 2019 +0430
+
+    adding Users By admin Done with profile Image
+
+[33mcommit 0f14af4fbfe290b4858d7504b80d6f19650e97bf[m
+Author: alireza farokhi <alireza.farokhi70@gmail.com>
+Date:   Tue Jun 18 10:58:32 2019 +0430
+
+    Users page Working without photoes
+
+[33mcommit e0897a705d6291f8d02990108468d662a487d4c4[m
+Author: alireza farokhi <alireza.farokhi70@gmail.com>
+Date:   Mon Jun 17 11:43:16 2019 +0430
+
+    admin master page setUp
+
+[33mcommit e8457944e9b964cf7fc9f2d7786049b025cb15a0[m
+Author: alireza farokhi <alireza.farokhi70@gmail.com>
+Date:   Sun Jun 16 15:07:54 2019 +0430
+
+    My first Commit -views implemented
