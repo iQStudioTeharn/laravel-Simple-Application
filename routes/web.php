@@ -26,7 +26,10 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('admin/users', 'AdminUsersController');
     Route::resource('admin/posts', 'AdminPostsController');
     Route::resource('admin/category', 'AdminCategoriesConrtoller');
-
+    Route::get('admin/media',['as'=>'media.index' ,'uses'=>'AdminMediaController@index']);
+    Route::get('admin/media/upload',['as'=>'admin.media.upload','uses'=>'AdminMediaController@upload']);
+    Route::post('admin/media/upload',['as'=>'admin.media.upload','uses'=>'AdminMediaController@save']);
+    Route::delete('admin/media/delete', ['as'=>'admin.media.delete','uses'=>'AdminMediaController@destroy']);
 
     Route::get('/admin', function () {
         return view('admin.index');
