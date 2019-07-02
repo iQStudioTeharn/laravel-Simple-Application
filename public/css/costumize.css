@@ -20,4 +20,10 @@
 label {
   cursor: pointer;
 }
+.leaveReply{
+  cursor: pointer;
+}
+.replyForm{
+  display : none;
+}
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -16,7 +17,7 @@ class CommentController extends Controller
     {
         //
 
-        $comments = Comment::findOrFail();
+        $comments = Comment::all();
         
         return view('comments.index',compact('comments'));
     }
@@ -40,6 +41,22 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         //
+        $user = Auth::user();
+
+        $data = [
+
+            'posts_id'=>$request->posts_id,
+            'author'=>$user->name,
+            'email'=>$user->email,
+            'body'=>$request->body,
+            
+
+        ];
+        
+
+        Comment::create($data);
+        $request->session()->flash('comment_message','Commented Successfully');
+        return redirect()->back();
     }
 
     /**
@@ -74,6 +91,9 @@ class CommentController extends Controller
     public function update(Request $request, Comment $comment)
     {
         //
+        $comment->is_Active = 1;
+        $comment->update();
+        return redirect()->back();
     }
 
     /**
@@ -85,5 +105,9 @@ class CommentController extends Controller
     public function destroy(Comment $comment)
     {
         //
+        $comment->delete();
+        return redirect()->back();
+
     }
+    
 }

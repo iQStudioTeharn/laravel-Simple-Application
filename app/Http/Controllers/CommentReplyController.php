@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CommentReply;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentReplyController extends Controller
 {
@@ -36,6 +37,23 @@ class CommentReplyController extends Controller
     public function store(Request $request)
     {
         //
+        $user = Auth::user();
+
+        $data = [
+
+            'comment_id'=>$request->comment_id,
+            'author'=>$user->name,
+            'email'=>$user->email,
+            'body'=>$request->body,
+            
+
+        ];
+        
+        
+
+        CommentReply::create($data);
+        $request->session()->flash('comment_message','Commented Successfully');
+        return redirect()->back();
     }
 
     /**
@@ -70,6 +88,11 @@ class CommentReplyController extends Controller
     public function update(Request $request, CommentReply $commentReply)
     {
         //
+        $commentReply = CommentReply::findOrFail($request->is_active);
+        $commentReply->is_Active = 1;
+        $commentReply->update();
+        return redirect()->back();
+        
     }
 
     /**
@@ -78,8 +101,13 @@ class CommentReplyController extends Controller
      * @param  \App\CommentReply  $commentReply
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CommentReply $commentReply)
+    public function destroy(Request $request,CommentReply $commentReply)
     {
         //
+        
+        $reply = CommentReply::findOrFail($request->is_active);
+        $reply->delete();
+        return redirect()->back();
+        
     }
 }

@@ -123,4 +123,12 @@ class AdminPostsController extends Controller
         $post->delete();
         return redirect('admin/posts');
     }
+
+
+
+
+    public function post($id){
+        $post = Posts::findOrFail($id);
+        return view('post',compact('post'));
+    }
 }

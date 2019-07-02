@@ -13,10 +13,14 @@ class Comment extends Model
         'author',
         'email',
         'is_active',
-        'post_id',
+        'posts_id',
     ];
 
     public function replies(){
         return $this->hasMany('App\CommentReply');
+    }
+    
+    public function posts(){
+        return $this->belongsTo('App\Posts');
     }
 }

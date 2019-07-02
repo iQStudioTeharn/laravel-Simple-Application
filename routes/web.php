@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\AdminPostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('post/{id}', ['as'=>'home.post','uses'=>'AdminPostsController@post']);
+
+
+
 
 Auth::routes();
 
@@ -41,6 +47,13 @@ Route::group(['middleware' => 'admin'], function () {
         return view('admin.index');
     });
 
+});
+
+Route::group(['middleware' => 'auth'], function () {
+
+    
+    Route::post('comment/reply', 'CommentReplyController@store');
+    
 });
 
 

@@ -71,6 +71,9 @@ $(document).ready(function(){
 
 
 
+    $('.leaveReply').on('click',function(){
+        $(this).next('.replyForm').slideToggle();
+    })
 
 
 
