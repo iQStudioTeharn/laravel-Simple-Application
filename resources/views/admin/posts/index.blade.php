@@ -26,7 +26,7 @@
                     
                     <td class="uk-text-middle">
                         <img src="/images/{{ $post->photo ? $post->photo->profileImage : 'profile.jpeg' }}" alt="postProfile" width="70" height="70"  class="uk-border-rounded">
-                        {{ $post->title }}
+                        <a href="{{ route('home.post',$post->slug) }}">{{ $post->title }}</a>
                     </td>
                     <td class="uk-text-middle">{{ str_limit($post->body,50) }}</td>
                     <td class="uk-text-middle">{{ !empty($post->category->name) ? $post->category->name : 'uncategorized' }}</td>
