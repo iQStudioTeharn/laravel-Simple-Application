@@ -25,7 +25,7 @@
                     <tr>
                         <td>{{ $comment->author }}</td>
                         <td>{{ $comment->body }}</td>
-                        <td><a href='{{ route('home.post',$comment->posts->id) }}'>{{ $comment->posts->title }}</a></td>
+                        <td><a href='{{ route('home.post',$comment->posts->slug) }}'>{{ $comment->posts->title }}</a></td>
                         <td>{{ $comment->is_active == 1 ? 'Y' : 'N' }}</td>
                         <td>{{ $comment->created_at->diffForHumans() }}</td>
                         <td>{{ $comment->updated_at->diffForHumans() }}</td>

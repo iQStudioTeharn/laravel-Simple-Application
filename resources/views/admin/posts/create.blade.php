@@ -3,6 +3,11 @@
 
 
 @section('content')
+
+
+
+
+
     <h1>Create Post</h1>
     @include('includes.form-errors')
     
@@ -37,4 +42,9 @@
 
     {!! Form::close() !!}
     
+@stop
+
+
+@section('footer')
+    @include('includes.tinyeditor')
 @stop
