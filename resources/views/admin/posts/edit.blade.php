@@ -39,3 +39,6 @@
     {!! Form::close() !!}
     
 @stop
+@section('footer')
+    @include('includes.tinyeditor')
+@stop

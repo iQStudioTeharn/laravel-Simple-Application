@@ -44,7 +44,7 @@
                 <hr>
 
                 <!-- Post Content -->
-                <article></article>
+                <article> {!! $post->body; !!} </article>
                 
 
                 <!-- Blog Comments -->
