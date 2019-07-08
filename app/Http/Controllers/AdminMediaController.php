@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\bulkDleteRequest;
 use App\Photo;
 
 class AdminMediaController extends Controller
@@ -37,5 +38,19 @@ class AdminMediaController extends Controller
          unlink('images/'. $photo->profileImage);
          $photo->delete();
          return redirect('admin/media');
+    }
+
+     public function bulkDelete(bulkDleteRequest $request)
+    {
+        # code...
+        $request = $request->all();
+        $ids = $request['bulkDelete'];
+        $photo = Photo::findOrFail($ids);
+        foreach ($photo as $p) {
+            # code...
+            unlink('images/'. $p->profileImage);
+            $p->delete();
+        }
+        return redirect('admin/media');
     }
 }

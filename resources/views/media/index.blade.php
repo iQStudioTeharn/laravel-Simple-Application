@@ -3,17 +3,19 @@
 
 
 @section('content')
-    
+@include('includes.form-errors')
     <h1>Media</h1>
 
 @if ($photos)
-    
+    <form id="bulkDelete" action="/admin/media/bulkdelete" method="POST"> @csrf </form>
     <table class="table">
         <thead>
             <th>name</th>
             <th>created</th>
             <th>updated</th>
             <th>action</th>
+            <th><input type="checkbox" id="selectAll" class="uk-text-middle uk-checkbox"> All</th>
+            <th><input type="submit" value="Delete Selected" form="bulkDelete" class="uk-button uk-button-danger"></th>
         </thead>
         <tbody>
             
@@ -37,6 +39,8 @@
                             </form>
                         </ul>
                     </td>
+                    <td class="uk-text-middle">{!! Form::checkbox('bulkDelete[]', $photo->id ,null,['form'=>'bulkDelete','class'=>'uk-checkbox checkboxes']) !!}</td>
+                    <td></td>
                 </tr>
             @endforeach
             
@@ -46,3 +50,17 @@
 @endif
 @stop
 
+
+@section('footer')
+    <script>
+        $('#selectAll').on('click',function(){
+            if($(this).prop("checked") == true){
+
+                $('.checkboxes').prop( "checked", true )
+            }
+            else {
+                $('.checkboxes').prop( "checked", false )
+            }
+        })
+    </script>
+@stop

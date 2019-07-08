@@ -63,3 +63,5 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
+
+Route::post('/admin/media/bulkdelete', 'AdminMediaController@bulkDelete');
